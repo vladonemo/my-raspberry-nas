@@ -1,0 +1,27 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+# 242 = 1h media drive
+hdparm -S 241 /dev/disk/by-uuid/5C080F18080EF0B6
+# backup drive
+hdparm -S 241 /dev/disk/by-uuid/5A22DB2D22DB0CBF
+# 240 = 20m main drive
+hdparm -S 240 /dev/disk/by-uuid/8620238620237C75
+
+exit 0

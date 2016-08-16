@@ -1,0 +1,23 @@
+copyFolder /home/pi/backup/scripts/
+copyFolder /home/pi/minidlna/scripts/
+copy /home/pi/subfolders.sh
+copy /home/pi/nightnight.sh
+copy /etc/samba/smb.conf
+copy /etc/crontab
+copy /etc/fstab
+copy /etc/hostname
+copy /etc/rc.local
+copy /etc/localtime
+copy /etc/minidlna.conf
+copy /etc/sysctl.conf
+copy /usr/bin/backup-script.sh
+copy /usr/bin/backup-restore.sh
+link /home/pi/backup/scripts/backupCamera /etc/cron.daily/backupCamera
+copy /etc/cron.daily/syncVideos
+link /home/pi/backup/scripts/backupData /etc/cron.weekly/backupData
+link /media/USBHDD_Media/Documentary /home/pi/minidlna/VideosRoot/Documentary
+link /media/USBHDD_Media/Movies /home/pi/minidlna/VideosRoot/Movies
+link /media/USBHDD_Media/Videos /home/pi/minidlna/VideosRoot/OtherVideos
+link /media/USBHDD_Media/Serials /home/pi/minidlna/VideosRoot/Serials
+
+

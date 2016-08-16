@@ -1,0 +1,27 @@
+#!/bin/bash
+
+folder=$(date -d "1 day ago" '+%Y_%m_%d')
+backupFolder=/media/USBHDD_Backup/Backup/Camera/Office
+logFile=/home/pi/backup/log/`date +\%Y-\%m-\%d-\%s`_officeCam.log
+
+echo Backing up folder $folder > $logFile
+cd $backupFolder
+mkdir -p $folder
+cd $folder
+smbget smb://backupuser:backupuser@192.168.0.253/Camera/$folder -rRnv >> $logFile 2>&1
+
+cd $backupFolder
+oldFolders=($(find $backupFolder  -mindepth 1 -maxdepth 1 -type d -ctime +7))
+for oldFolder in ${oldFolders[*]}
+do
+  echo Zipping $oldFolder >> $logFile
+  tar cvfz $oldFolder.tar.gz >> $logFile
+  rm -f $oldFolder/* >> $logFile
+  rmdir $oldFolder >> $logFile
+done
+
+backupsToDelete=($(find $backupFolder  -mindepth 1 -maxdepth 1 -name *.tar.gz -type f -ctime +14))
+for oldBackup in ${backupsToDelete[*]}
+  echo Deleting backup $oldBackup >> $logFile
+  rm -f $oldBackup >> $logFile
+done

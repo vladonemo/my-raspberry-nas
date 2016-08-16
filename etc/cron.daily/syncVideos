@@ -1,0 +1,5 @@
+#!/bin/bash
+
+videosFolder=/home/pi/minidlna/VideosRoot/Videos
+
+/home/pi//minidlna/scripts/syncVideos.sh $videosFolder

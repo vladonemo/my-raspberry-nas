@@ -1,0 +1,8 @@
+proc            /proc           proc    defaults          0       0
+/dev/mmcblk0p1  /boot           vfat    defaults          0       2
+/dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
+# a swapfile is not a swap partition, so no using swapon|off from here on, use  dphys-swapfile swap[on|off]  for that
+UUID=8620238620237C75	/media/USBHDD_Main	ntfs-3g	defaults,noatime,nls=utf8,uid=1000,umask=0000   0   0
+UUID=5A22DB2D22DB0CBF	/media/USBHDD_Backup	ntfs-3g	defaults,noatime,nls=utf8,uid=1000,umask=0000   0   0
+UUID=5C080F18080EF0B6	/media/USBHDD_Media	ntfs-3g defaults,noatime,nls=utf8,uid=1000,umask=0000   0   0
+

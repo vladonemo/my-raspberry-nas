@@ -10,8 +10,13 @@ if [ ! -d "$2" ]; then
   exit
 fi
 
+if [ ! -d "$3" ]; then
+  echo Please provide restore directory as an argument.
+  exit
+fi
+
 input="$2"
-output="/home/pi/test/restore"
+output="$3"
 
 ./copyFiles.sh $1 $input $output
 

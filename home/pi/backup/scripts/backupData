@@ -3,4 +3,4 @@
 /home/pi/backup/scripts/backup_hdd_main.sh Photos incremental
 /home/pi/backup/scripts/backup_hdd_main.sh Users incremental
 /home/pi/backup/scripts/backup_hdd_main.sh Videos incremental
-
+/home/pi/backup/scripts/backupPlex.sh incremental

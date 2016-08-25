@@ -6,14 +6,23 @@ copy /etc/samba/smb.conf
 copy /etc/crontab
 copy /etc/fstab
 copy /etc/hostname
+copy /etc/hosts
 copy /etc/rc.local
 copy /etc/localtime
 copy /etc/minidlna.conf
 copy /etc/sysctl.conf
+copy /etc/default/plexmediaserver
+copy /etc/init.d/plexmediaserver
+copy /etc/locale.gen
 copy /usr/bin/backup-script.sh
 copy /usr/bin/backup-restore.sh
+copy /usr/sbin/start_pms
 link /home/pi/backup/scripts/backupCamera /etc/cron.daily/backupCamera
 copy /etc/cron.daily/syncVideos
+mkdir /media/USBHDD_Main
+mkdir /media/USBHDD_Backup
+mkdir /media/USBHDD_Media
+mkdir /home/pi/backup/log
 link /home/pi/backup/scripts/backupData /etc/cron.weekly/backupData
 link /media/USBHDD_Media/Documentary /home/pi/minidlna/VideosRoot/Documentary
 link /media/USBHDD_Media/Movies /home/pi/minidlna/VideosRoot/Movies

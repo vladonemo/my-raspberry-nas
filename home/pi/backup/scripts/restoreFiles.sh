@@ -29,5 +29,9 @@ do
       mkdir -p `dirname $output${elements[2]}`
       ln -s ${elements[1]} $output${elements[2]}
       ;;
+    "mkdir")
+      echo Creating dir $output${elements[1]}
+      mkdir -p $output${elements[1]}
+      ;;
   esac
 done < $1

@@ -2,12 +2,13 @@ copyFolder /home/pi/backup/scripts/
 copyFolder /home/pi/minidlna/scripts/
 copy /home/pi/subfolders.sh
 copy /home/pi/nightnight.sh
+copy /hope/pi/showDriveStates.sh
 copy /etc/samba/smb.conf
 copy /etc/crontab
 copy /etc/fstab
 copy /etc/hostname
 copy /etc/hosts
-copy /etc/rc.local
+copy /etc/hdparm.conf
 copy /etc/localtime
 copy /etc/minidlna.conf
 copy /etc/sysctl.conf

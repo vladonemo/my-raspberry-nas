@@ -13,11 +13,17 @@ fi
 
 logFile="/home/pi/backup/log/`date +\%Y-\%m-\%d-\%s`_pms_$type.log"
 
-echo "Stopping Plex Media Server" | tee -a $logFile
-systemctl stop plexmediaserver | tee -a $logFile
+if [ "$2" == "noRestart" ]; then
+else
+    echo "Stopping Plex Media Server" | tee -a $logFile
+    systemctl stop plexmediaserver | tee -a $logFile
+fi
 
 echo "Backing up Plex Media Server Library" | tee -a $logFile
 /usr/bin/backup-script.sh /var/lib/plexmediaserver/ PlexMediaServer $1 $lofFile 2>&1 | tee -a $logFIle
 
-echo "Starting Plex Media Server" | tee -a $logFile
-systemctl start plexmediaserver | tee -a $logFile
+if [ "$2" == "noRestart" ]; then
+else
+    echo "Starting Plex Media Server" | tee -a $logFile
+    systemctl start plexmediaserver | tee -a $logFile
+fi

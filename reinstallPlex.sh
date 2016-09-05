@@ -7,7 +7,9 @@ fi
 
 scriptRoot=`dirname $0`
 
+systemctl stop plexmediaserver
 echo "Backing up the Plex Media Server library"
-bash /home/pi/backup/scripts/backupPlex.sh full
+bash /home/pi/backup/scripts/backupPlex.sh full noRestart
 echo "Installing plex"
 bash $scriptRoot/installPlex.sh
+systemctl start plexmediaserver

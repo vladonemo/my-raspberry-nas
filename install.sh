@@ -10,8 +10,8 @@ sudo systemctl set-default multi-user.target
 sudo cp /usr/share/zoneinfo/Europe/Bratislava > /etc/localtime
 
 echo "Installing packages" | tee -a $logFile
-sudo apt-get update | tee -a $logFile
-sudo apt-get upgrade | tee -a $logFile
+sudo apt-get update --force-yes --yes | tee -a $logFile
+sudo apt-get upgrade --force-yes --yes | tee -a $logFile
 sudo apt-get install git minidlna samba samba-common smbclient screen youtube-dl hdparm ntfs-3g binutils libexpat1-dev libc6 --force-yes --yes | tee -a $logFile
 
 echo "Getting the custom scripts from github" | tee -a $logFile
@@ -26,7 +26,7 @@ sudo chown plex -R /usr/lib/plexmediaserver
 
 echo "Installing the custom scripts" | tee -a $logFile
 cd $repParent/my-raspberry-nas/home/pi/backup/scripts/
-sudo ./restoreFiles.sh list_fullNas.lst ~/my-raspberry-nas / | tee -a $logFile
+sudo ./restoreFiles.sh list_nasFull.lst ~/my-raspberry-nas / | tee -a $logFile
 
 sudo bash -c "echo 100000 > /proc/sys/fs/inotify/max_user_watches"
 sudo locale-gen

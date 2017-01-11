@@ -7,7 +7,6 @@ echo "Expanding the partition to fill the SD card" | tee $logFile
 sudo raspi-config --expand-rootfs | tee -a $logFile
 echo "Setting the default boot option to console, so no UI" | tee -a $logFile
 sudo systemctl set-default multi-user.target
-sudo cp /usr/share/zoneinfo/Europe/Bratislava > /etc/localtime
 
 echo "Installing packages" | tee -a $logFile
 sudo apt-get update --force-yes --yes | tee -a $logFile

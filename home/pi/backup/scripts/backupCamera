@@ -11,6 +11,8 @@ cd $folder
 smbget smb://backupuser:backupuser@192.168.0.253/Camera/$folder -rRnv >> $logFile 2>&1
 
 cd $backupFolder
+find $folder -maxdepth 0 -type d -empty -delete
+
 for oldFolder in $(find $backupFolder -mindepth 1 -maxdepth 1 -type d -ctime +7)
 do
   echo Zipping $oldFolder >> $logFile
@@ -19,7 +21,7 @@ do
   rmdir $oldFolder >> $logFile
 done
 
-for oldBackup in $(find $backupFolder -mindepth 1 -maxdepth 1 -name *.tar.gz -type f -ctime +14)
+for oldBackup in $(find $backupFolder -mindepth 1 -maxdepth 1 -name '*.tar.gz' -type f -ctime +14)
 do
   echo Deleting backup $oldBackup >> $logFile
   rm -f $oldBackup >> $logFile

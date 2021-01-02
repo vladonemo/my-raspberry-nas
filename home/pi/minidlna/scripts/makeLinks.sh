@@ -1,7 +1,7 @@
 #!/bin/bash
 
-destination=$1
-folderToSearch=$2
+destination="$1"
+folderToSearch="$2"
 shift
 shift
 for x; do
